@@ -1,7 +1,7 @@
 # HiveMQ getting started examples
 
 These example projects are linked to posts on the HiveMQ website to illustrate 
-the use of a queue between Arduino and Raspberry Pi to collect and visualize data.
+the use of a queue between multiple Raspberry Pi to collect and visualize data.
 
 ## Articles
 
