@@ -19,6 +19,9 @@ the use of a queue between multiple Raspberry Pi to collect and visualize data.
 If you are developing this application on a PC, you can easily transfer the files to a Raspberry Pi to compile and run
 the code on it with the following command (replace with the IP of your board):
 
+E.g. for the first part:
+
 ```shell
+$ cd java-to-hivemq
 $ scp -r * pi@IP_OF_YOUR_PI://home/pi/java-to-hivemq
 ```
