@@ -20,5 +20,5 @@ If you are developing this application on a PC, you can easily transfer the file
 the code on it with the following command (replace with the IP of your board):
 
 ```shell
-$ scp -r * pi@192.168.0.119://home/pi/java-to-hivemq
+$ scp -r * pi@IP_OF_YOUR_PI://home/pi/java-to-hivemq
 ```
