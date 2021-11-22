@@ -12,6 +12,7 @@ public class HiveMqManager {
     private static final String HIVEMQ_SERVER = "ID_OF_YOUR_INSTANCE.s1.eu.hivemq.cloud";
     private static final String HIVEMQ_USER = "YOUR_USERNAME";
     private static final String HIVEMQ_PASSWORD = "YOUR_PASSWORD";
+    private static final int HIVEMQ_PORT = 8883;
 
     private static Console console;
     private static Mqtt5AsyncClient client;
@@ -23,7 +24,7 @@ public class HiveMqManager {
                 .useMqttVersion5()
                 .identifier("Java_" + UUID.randomUUID())
                 .serverHost(HIVEMQ_SERVER)
-                .serverPort(8883)
+                .serverPort(HIVEMQ_PORT)
                 .sslWithDefaultConfig()
                 .buildAsync();
 

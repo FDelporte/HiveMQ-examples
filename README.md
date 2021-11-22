@@ -11,8 +11,11 @@ the use of a queue between multiple Raspberry Pi to collect and visualize data.
 
 ***
 
+### Part 2: Visualizing data on a TilesFX dashboard on Raspberry Pi
 
+**Directory: javafx-ui-hivemq**
 
+***
 
 ## Notes
 

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <RollingFile name="rollingFile"
+                     fileName="logs/client.log"
+                     filePattern="logs/client-%d{yyyy-MM-dd}.log"
+                     ignoreExceptions="false">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} - [%t] - %-5level - %c{1}.%L - %msg%n"/>
+            <Policies>
+                <OnStartupTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} - [%t] - %-5level - %c{1}.%L - %msg%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <logger name="be.webtechie.hivemqclient" level="INFO">
+            <AppenderRef ref="rollingFile"/>
+        </logger>
+        <Root level="ERROR">
+            <AppenderRef ref="console"/>
+        </Root>
+    </Loggers>
+</Configuration>
