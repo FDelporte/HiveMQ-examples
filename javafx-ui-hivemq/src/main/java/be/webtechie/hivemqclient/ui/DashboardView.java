@@ -1,5 +1,6 @@
 package be.webtechie.hivemqclient.ui;
 
+import be.webtechie.hivemqclient.model.DoubleValue;
 import be.webtechie.hivemqclient.model.Sensor;
 import be.webtechie.hivemqclient.ui.tiles.NoiseTextTile;
 import be.webtechie.hivemqclient.ui.tiles.SensorSwitchTile;
@@ -36,6 +37,7 @@ public class DashboardView extends FlowGridPane {
 
     private final Tile gaucheTemperature;
     private final Tile gaucheDistance;
+    private final Tile gaucheDistancePico;
     private final Tile gaucheLight;
     private final Tile percentageHumidity;
 
@@ -81,7 +83,15 @@ public class DashboardView extends FlowGridPane {
         gaucheDistance = TileBuilder.create()
                 .skinType(Tile.SkinType.GAUGE)
                 .prefSize(TILE_WIDTH, TILE_HEIGHT)
-                .title("Distance")
+                .title("Distance CrowPi")
+                .unit("cm")
+                .maxValue(255)
+                .build();
+
+        gaucheDistancePico = TileBuilder.create()
+                .skinType(Tile.SkinType.GAUGE)
+                .prefSize(TILE_WIDTH, TILE_HEIGHT)
+                .title("Distance Pico")
                 .unit("cm")
                 .maxValue(255)
                 .build();
@@ -98,6 +108,7 @@ public class DashboardView extends FlowGridPane {
                 gaucheTemperature,
                 percentageHumidity,
                 gaucheDistance,
+                gaucheDistancePico,
                 gaucheLight,
                 new TiltStatusTile(client, TOPIC_TILT),
                 new SensorSwitchTile(client, TOPIC_TOUCH, "Touch sensor", "Show if the sensor is touched"),
@@ -109,17 +120,34 @@ public class DashboardView extends FlowGridPane {
                 .qos(MqttQos.AT_LEAST_ONCE)
                 .callback(this::handleSensorData)
                 .send();
+
+        client.toAsync().subscribeWith()
+                .topicFilter(TOPIC_PICO_DISTANCE)
+                .qos(MqttQos.AT_LEAST_ONCE)
+                .callback(this::handlePicoData)
+                .send();
     }
 
     private void handleSensorData(Mqtt5Publish message) {
         var sensorData = new String(message.getPayloadAsBytes());
-        logger.warn("Sensor data: {}", sensorData);
+        logger.info("Sensor data: {}", sensorData);
         try {
             var sensor = mapper.readValue(sensorData, Sensor.class);
             gaucheTemperature.setValue(sensor.getTemperature());
             percentageHumidity.setValue(sensor.getHumidity());
             gaucheDistance.setValue(sensor.getDistance());
             gaucheLight.setValue(sensor.getLight());
+        } catch (JsonProcessingException ex) {
+            logger.error("Could not parse the data to JSON: {}", ex.getMessage());
+        }
+    }
+
+    public void handlePicoData(Mqtt5Publish message) {
+        var sensorData = new String(message.getPayloadAsBytes());
+        logger.info("Pico distance data: {}", sensorData);
+        try {
+            var sensor = mapper.readValue(sensorData, DoubleValue.class);
+            gaucheDistancePico.setValue(sensor.getValue());
         } catch (JsonProcessingException ex) {
             logger.error("Could not parse the data to JSON: {}", ex.getMessage());
         }

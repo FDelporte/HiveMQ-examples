@@ -48,7 +48,7 @@ public class TiltStatusTile extends BaseTile {
     @Override
     public void handleMessage(Mqtt5Publish message) {
         var sensorData = new String(message.getPayloadAsBytes());
-        logger.warn("Tilt sensor data: {}", sensorData);
+        logger.info("Tilt sensor data: {}", sensorData);
         try {
             var sensor = mapper.readValue(sensorData, StringValue.class);
             if (sensor.getValue().equalsIgnoreCase("left")) {

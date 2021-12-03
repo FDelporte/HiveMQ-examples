@@ -5,15 +5,21 @@ the use of a queue between multiple Raspberry Pi to collect and visualize data.
 
 ## Articles
 
-### Part 1: Sending sensor data from Raspberry Pi with Java and Pi4j to HiveMQ
+### Part 1: Sending sensor data from Raspberry Pi with Java and Pi4j to HiveMQ Cloud
 
 **Directory: java-to-hivemq**
 
 ***
 
-### Part 2: Visualizing data on a TilesFX dashboard on Raspberry Pi
+### Part 2: Visualizing data from HiveMQ Cloud on a TilesFX dashboard on Raspberry Pi
 
 **Directory: javafx-ui-hivemq**
+
+***
+
+### Part 3: Sending sensor data from Raspberry Pi Pico to HiveMQ Cloud 
+
+**Directory: pico-to-hivemq**
 
 ***
 

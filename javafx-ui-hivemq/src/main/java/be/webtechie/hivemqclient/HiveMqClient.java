@@ -20,6 +20,7 @@ public class HiveMqClient extends Application {
     public static final String TOPIC_SENSORS = "crowpi/sensors";
     public static final String TOPIC_TILT = "crowpi/tilt";
     public static final String TOPIC_TOUCH = "crowpi/touch";
+    public static final String TOPIC_PICO_DISTANCE = "pico/distance";
 
     private static final String HIVEMQ_SERVER = "ID_OF_YOUR_INSTANCE.s1.eu.hivemq.cloud";
     private static final String HIVEMQ_USER = "YOUR_USERNAME";
