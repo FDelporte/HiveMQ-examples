@@ -25,7 +25,7 @@ Full article: [Using MQTT and Raspberry Pi to Visualize Sensor Data on a TilesFX
 
 **Directory: pico-to-hivemq**
 
-Full article: []()
+Full article: [Sending sensor data from Raspberry Pi Pico to HiveMQ Cloud](https://www.hivemq.com/blog/mqtt-raspberrypi-part03-sending-sensor-data-hivemqcloud-pico/)
 
 ***
 
