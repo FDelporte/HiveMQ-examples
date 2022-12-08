@@ -29,6 +29,14 @@ Full article: [Sending sensor data from Raspberry Pi Pico to HiveMQ Cloud](https
 
 ***
 
+### Part 4: Sending sensor data from Raspberry Pi Pico W to HiveMQ Cloud
+
+**Directory: picow-to-hivemq**
+
+Full article: [Sending sensor data from Raspberry Pi Pico W to HiveMQ Cloud](https://webtechie.be/post/2022-12-07-sending-sensor-data-from-raspberry-pi-pico-w-to-hivemq-cloud/)
+
+***
+
 ## Notes
 
 If you are developing this application on a PC, you can easily transfer the files to a Raspberry Pi to compile and run
